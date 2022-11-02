@@ -76,13 +76,11 @@ function handleCardClick(evt) {
   return false
 }
 
-debugger
 function flipCardReveal(card) {
   card.src = card.id;
   card.id = CARD_FRONT;
   card.className = "back";
 
-  debugger
   const firstCard = document.getElementsByClassName('back')[0];
   const secondCard = document.getElementsByClassName('back')[1];
 
@@ -92,6 +90,8 @@ function flipCardReveal(card) {
   }
 }
 
+
+//ACTIVATE THE FOLLOWING FUNCTION AND OBSERVE HOW IT BREAKS THE CODE:
 /*
 function flipCardFaceDown(card1, card2) {
   card1.id = card1.src;
@@ -103,6 +103,16 @@ function flipCardFaceDown(card1, card2) {
   card2.className = "front";
 }
 */
+
+
+
+
+
+//IGNORE EVERYTHING BELOW THIS LINE
+
+
+
+
 
 
 
