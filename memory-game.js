@@ -8,7 +8,10 @@ const CARD_FRONT = "imgs/memory-card-front.png";
 const IMAGES = ["imgs/card-1-img.png", "imgs/card-1-img.png", "imgs/card-2-img.png",
   "imgs/card-2-img.png", "imgs/card-3-img.png", "imgs/card-3-img.png",
   "imgs/card-4-img.png", "imgs/card-4-img.png", "imgs/card-5-img.png",
-  "imgs/card-5-img.png"
+  "imgs/card-5-img.png", "white-imgs/whiteimg-6", "white-imgs/whiteimg-7",
+  "white-imgs/whiteimg-8", "white-imgs/whiteimg-9", "white-imgs/whiteimg-10",
+  "white-imgs/whiteimg-6", "white-imgs/whiteimg-7", "white-imgs/whiteimg-8",
+  "white-imgs/whiteimg-9", "white-imgs/whiteimg-10"
 ];
 
 
