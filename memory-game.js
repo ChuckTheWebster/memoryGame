@@ -35,6 +35,8 @@ function createCards(imagesShuffled) {
 
   for (let image of imagesShuffled) {
     const divForIndividualCard = document.createElement('div');
+
+
     divForIndividualCard.className = 'card';
     divForIndividualCard.addEventListener('click', function(e) {
       handleCardClick(e);
@@ -43,9 +45,12 @@ function createCards(imagesShuffled) {
     //event listener
 
     const imgForFront = document.createElement('img');
+
+
+
     imgForFront.src = CARD_FRONT;
-    imgForFront.id = image;
-    imgForFront.className = "front"
+    //imgForFront.id = image;
+    imgForFront.className = image;
 
     divForIndividualCard.appendChild(imgForFront);
     gameBoard.appendChild(divForIndividualCard);
@@ -57,10 +62,16 @@ createCards(imagesShuffled);
 
 function handleCardClick(evt) {
 
-  const firstCardFlipped = document.getElementsByClassName('back')[0];
-  const secondCardFlipped = document.getElementsByClassName('back')[1];
+  //FIX THESE
+  const twentiethCard = document.getElementsByClassName('CARD_FRONT')[19];
+  if (twentiethCard === undefined) {
+    return flipCardReveal(evt.target)
+  }
 
-  if (firstCardFlipped === undefined) {
+  //const firstCardFlipped = document.getElementsByClassName('back')[0];
+  //const secondCardFlipped = document.getElementsByClassName('back')[1];
+  const nineteenthCard = document.getElementsByClassName('CARD_FRONT')[18];
+  if (nineteenthCard === undefined && evt.target.class) {
     return flipCardReveal(evt.target); //card probably wrong input
   }
 
