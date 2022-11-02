@@ -1,20 +1,33 @@
-/* you can add to or change this. */
 
-#game div {
-  width: 200px;
-  height: 100px;
-  margin: 5px;
-  border: 2px solid green;
-  /*display: inline-block;*/
+body {
+  text-align: center;
+  background-image: url("imgs/memory-card-front.png");
+  background-color: #cccccc;
+  color: white;
+  font-family: Cinzel, sans-serif;
 }
 
 img {
-  height: 200px;
-  width: 100px;
-  border: 2px solid red;
+  height: 125px;
+  width: 80px;
+  border: 2px solid white;
+  border-radius: 12px;
 }
 
 .card-container {
   display: flex;
-  /*flex-wrap: wrap;*/
+  flex-wrap: wrap;
+  width: 500px;
+  justify-content: center;
+  margin: auto;
+  margin-top: 30px;
+}
+
+/*SETTING THE WIDTH OF THE CARD CONTAINER IS KEY
+FOR FORCING THE SPACE BETWEEN CARDS TO BE LIMITED
+AND .card flex: 0 1 19% ensures 5 cards are on
+each row*/
+
+.card {
+  flex: 0 1 19%;
 }
