@@ -36,7 +36,6 @@ function createCards(imagesShuffled) {
   for (let image of imagesShuffled) {
     const divForIndividualCard = document.createElement('div');
     divForIndividualCard.className = 'card front';
-    divForIndividualCard.id = image;
     divForIndividualCard.addEventListener('click', function(e) {
       handleCardClick(e);
       //is e the card here? What is the card?
@@ -45,6 +44,7 @@ function createCards(imagesShuffled) {
 
     const imgForFront = document.createElement('img');
     imgForFront.src = CARD_FRONT;
+    imgForFront.id = image;
 
     divForIndividualCard.appendChild(imgForFront);
     gameBoard.appendChild(divForIndividualCard);
@@ -55,11 +55,7 @@ function createCards(imagesShuffled) {
 createCards(imagesShuffled);
 
 function handleCardClick(evt) {
-  // ... you need to write this ...
-  // if two cards are turned over, do nothing
-  // if clicked the same card, do nothing
 
-  //do I need to put an if statement saying if front isn't undefined?
   const firstCardFlipped = document.getElementsByClassName('back')[0];
   const secondCardFlipped = document.getElementsByClassName('back')[1];
 
@@ -79,6 +75,7 @@ function handleCardClick(evt) {
 
 function flipCardReveal(card) {
   card.src = card.id;
+  card.id = CARD_FRONT;
 }
 
 
