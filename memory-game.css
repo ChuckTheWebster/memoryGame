@@ -7,3 +7,9 @@
   margin: 20px;
   display: inline-block;
 }
+
+img {
+  height: 200px;
+  width: 100px;
+  border: 2px solid white;
+}
