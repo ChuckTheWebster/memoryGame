@@ -8,10 +8,10 @@ const CARD_FRONT = "imgs/memory-card-front.png";
 const IMAGES = ["imgs/card-1-img.png", "imgs/card-1-img.png", "imgs/card-2-img.png",
   "imgs/card-2-img.png", "imgs/card-3-img.png", "imgs/card-3-img.png",
   "imgs/card-4-img.png", "imgs/card-4-img.png", "imgs/card-5-img.png",
-  "imgs/card-5-img.png", "white-imgs/whiteimg-6", "white-imgs/whiteimg-7",
-  "white-imgs/whiteimg-8", "white-imgs/whiteimg-9", "white-imgs/whiteimg-10",
-  "white-imgs/whiteimg-6", "white-imgs/whiteimg-7", "white-imgs/whiteimg-8",
-  "white-imgs/whiteimg-9", "white-imgs/whiteimg-10"
+  "imgs/card-5-img.png", "imgs/white-img-6.png", "imgs/white-img-7.png",
+  "imgs/white-img-8.png", "imgs/white-img-9.png", "imgs/white-img-10.png",
+  "imgs/white-img-6.png", "imgs/white-img-7.png", "imgs/white-img-8.png",
+  "imgs/white-img-9.png", "imgs/white-img-10.png"
 ];
 
 
@@ -45,6 +45,7 @@ function createCards(imagesShuffled) {
     const imgForFront = document.createElement('img');
     imgForFront.src = CARD_FRONT;
     imgForFront.id = image;
+    imgForFront.className = "front"
 
     divForIndividualCard.appendChild(imgForFront);
     gameBoard.appendChild(divForIndividualCard);
@@ -63,8 +64,10 @@ function handleCardClick(evt) {
     return flipCardReveal(evt.target); //card probably wrong input
   }
 
-  if (secondCardFlipped === undefined && firstCardFlipped.id !==
-    secondCardFlipped.id) {
+  //this prevents the same card already flipped over from being flipped back
+  //and flips the second card
+  if (secondCardFlipped === undefined && firstCardFlipped.className !==
+    evt.target.className) {
     flipCardReveal(evt.target);
   }
 
@@ -76,8 +79,20 @@ function handleCardClick(evt) {
 function flipCardReveal(card) {
   card.src = card.id;
   card.id = CARD_FRONT;
+  card.className = "back";
+
+  const firstCardFlipped = document.getElementsByClassName('back')[0];
+  const secondCardFlipped = document.getElementsByClassName('back')[1];
+  //if two cards are flipped over aka two have className "back" then
+  setTimeout(flipCards(firstCardFlipped, secondCardFlipped), 1000);
 }
 
+/*
+function flipCards(card1, card2) {
+  flipCardFaceDown(card1);
+  flipCardFaceDown(card2);
+}
+*/
 
 
 /** Shuffle array items in-place and return shuffled array. */
@@ -123,10 +138,7 @@ function flipCardFaceDown(card) {
 
 //THIS IS A FUNCTION THAT I ADDED:
 /*UNCOMMENT
-function flipCards(card1, card2) {
-  flipCardFaceDown(//card1);
-  flipCardFaceDown(//card2);
-}
+
 */
 
 
