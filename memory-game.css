@@ -1,18 +1,20 @@
 /* you can add to or change this. */
 
 #game div {
-  width: 100px;
+  width: 200px;
   height: 100px;
-  margin: 20px;
+  margin: 5px;
+  border: 2px solid green;
   /*display: inline-block;*/
 }
 
 img {
   height: 200px;
   width: 100px;
-  border: 2px solid black;
+  border: 2px solid red;
 }
 
 .card-container {
   display: flex;
+  /*flex-wrap: wrap;*/
 }
