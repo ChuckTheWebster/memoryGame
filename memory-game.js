@@ -3,23 +3,17 @@
 /** Memory game: find matching pairs of cards and flip both of them. */
 
 const FOUND_MATCH_WAIT_MSECS = 1000;
-const COLORS = [
-  "red", "blue", "green", "orange", "purple",
-  "red", "blue", "green", "orange", "purple",
+
+const CARD_FRONT = "imgs/memory-card-front.png";
+const IMAGES = ["imgs/card-1-img.png", "imgs/card-1-img.png", "imgs/card-2-img.png",
+  "imgs/card-2-img.png", "imgs/card-3-img.png", "imgs/card-3-img.png",
+  "imgs/card-4-img.png", "imgs/card-4-img.png", "imgs/card-5-img.png",
+  "imgs/card-5-img.png"
 ];
 
-const colors = shuffle(COLORS);
 
-createCards(colors);
-
-
-/** Shuffle array items in-place and return shuffled array. */
-
+//This algorithm does a perfect Fisher-Yates shuffle:
 function shuffle(items) {
-  // This algorithm does a "perfect shuffle", where there won't be any
-  // statistical bias in the shuffle (many naive attempts to shuffle end up not
-  // be a fair shuffle). This is called the Fisher-Yates shuffle algorithm; if
-  // you're interested, you can learn about it, but it's not important.
 
   for (let i = items.length - 1; i > 0; i--) {
     // generate a random index between 0 and i
@@ -31,6 +25,37 @@ function shuffle(items) {
   return items;
 }
 
+//The following shuffles the images and createsCards from them:
+const imagesShuffled = shuffle(IMAGES);
+const gameBoard = document.getElementById('card-list');
+function createCards(imagesShuffled) {
+
+  for (let image of imagesShuffled) {
+    const divForIndividualCard = document.createElement('div');
+    divForIndividualCard.className = 'card';
+    divForIndividualCard.id = image;
+
+    const imgForFront = document.createElement('img');
+    imgForFront.src = CARD_FRONT;
+
+    divForIndividualCard.appendChild(imgForFront);
+    gameBoard.appendChild(divForIndividualCard);
+  }
+
+  return false
+}
+createCards(imagesShuffled);
+
+
+
+
+
+
+
+/** Shuffle array items in-place and return shuffled array. */
+
+
+
 /** Create card for every color in colors (each will appear twice)
  *
  * Each div DOM element will have:
@@ -38,6 +63,7 @@ function shuffle(items) {
  * - a click event listener for each card to handleCardClick
  */
 
+/**THE Function for colors instead of images:
 function createCards(colors) {
   const gameBoard = document.getElementById("game");
 
@@ -50,9 +76,12 @@ function createCards(colors) {
     //is probably now important
   }
 }
+*/
+
 
 /** Flip a card face-up. */
 
+/*UNCOMMENT
 function flipCardReveal(card) {
   // ... you need to write this ...
   const idAssociatedToBack = document.getElementsByClassName('back').id;
@@ -60,33 +89,40 @@ function flipCardReveal(card) {
   //I'm trying to name the img of the front that is associated to the backID
   //then I can somehow make the div show the front instead of the back
 }
+*/
 
 /** Flip a card face-down. */
 
+/*UNCOMMENT
 function flipCardFaceDown(card) {
   // ... you need to write this ...
 }
+*/
 
 //THIS IS A FUNCTION THAT I ADDED:
+/*UNCOMMENT
 function flipCards(card1, card2) {
   flipCardFaceDown(//card1);
   flipCardFaceDown(//card2);
 }
+*/
 
 
 /** Handle clicking on a card: this could be first-card or second-card. */
 
 //MAKE AN event listener for the clicking of cards
 
-
+/*UNCOMMENT
 function handleCardClick(evt) {
   // ... you need to write this ...
   // if two cards are turned over, do nothing
   // if clicked the same card, do nothing
-  const front0 = document.getElementsByClassName('front')[0];
-  const front1 = document.getElementsByClassName('front')[1];
 
-  if (front0 === undefined) {
+  //do I need to put an if statement saying if front isn't undefined?
+  const firstCardFront = document.getElementsByClassName('front')[0];
+  const secondCardFront = document.getElementsByClassName('front')[1];
+
+  if (firstCardFront === undefined) {
     //flip a bitch
     return flipCardReveal(card); //card probably wrong input
   }
@@ -103,6 +139,7 @@ function handleCardClick(evt) {
   //the function?
   return false
 }
+*/
 
 //can you make an even listener for when two cards are clicked,
 //or do you commence setTimeout from inside the function
