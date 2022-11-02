@@ -35,8 +35,13 @@ function createCards(imagesShuffled) {
 
   for (let image of imagesShuffled) {
     const divForIndividualCard = document.createElement('div');
-    divForIndividualCard.className = 'card';
+    divForIndividualCard.className = 'card front';
     divForIndividualCard.id = image;
+    divForIndividualCard.addEventListener('click', function(e) {
+      handleCardClick(e);
+      //is e the card here? What is the card?
+    })
+    //event listener
 
     const imgForFront = document.createElement('img');
     imgForFront.src = CARD_FRONT;
@@ -49,9 +54,32 @@ function createCards(imagesShuffled) {
 }
 createCards(imagesShuffled);
 
+function handleCardClick(evt) {
+  // ... you need to write this ...
+  // if two cards are turned over, do nothing
+  // if clicked the same card, do nothing
 
+  //do I need to put an if statement saying if front isn't undefined?
+  const firstCardFlipped = document.getElementsByClassName('back')[0];
+  const secondCardFlipped = document.getElementsByClassName('back')[1];
 
+  if (firstCardFlipped === undefined) {
+    return flipCardReveal(evt.target); //card probably wrong input
+  }
 
+  if (secondCardFlipped === undefined && firstCardFlipped.id !==
+    secondCardFlipped.id) {
+    flipCardReveal(evt.target);
+  }
+
+  //does this need to say return false to stop executing
+  //the function?
+  return false
+}
+
+function flipCardReveal(card) {
+  card.src = card.id;
+}
 
 
 
@@ -85,13 +113,7 @@ function createCards(colors) {
 /** Flip a card face-up. */
 
 /*UNCOMMENT
-function flipCardReveal(card) {
-  // ... you need to write this ...
-  const idAssociatedToBack = document.getElementsByClassName('back').id;
-  const imgOfFrontFromId = //this syntax is a little wonky,
-  //I'm trying to name the img of the front that is associated to the backID
-  //then I can somehow make the div show the front instead of the back
-}
+f
 */
 
 /** Flip a card face-down. */
