@@ -43,23 +43,50 @@ function createCards(colors) {
 
   for (let color of colors) {
     // missing code here ...
+    //for every color of colors
   }
 }
 
 /** Flip a card face-up. */
 
-function flipCard(card) {
+function flipCardReveal(card) {
   // ... you need to write this ...
 }
 
 /** Flip a card face-down. */
 
-function unFlipCard(card) {
+function flipCardFaceDown(card) {
   // ... you need to write this ...
 }
 
 /** Handle clicking on a card: this could be first-card or second-card. */
 
+
 function handleCardClick(evt) {
   // ... you need to write this ...
+  // if two cards are turned over, do nothing
+  // if clicked the same card, do nothing
+  const front0 = document.getElementsByClassName('front')[0];
+  const front1 = document.getElementsByClassName('front')[1];
+
+  if (front0 === undefined) {
+    //flip a bitch
+    return flipCardReveal(card);
+  }
+
+  if (front1 === undefined && front0.id !== front1.id) {
+    return flipCardReveal(card);
+  }
+  //does this need to say return false to stop executing
+  //the function?
+  return false
 }
+
+
+//calling the colors variable, executes
+//shuffle(COLORS) shuffles our list const of colors.
+//and RETURNS an array of random colors
+
+//we then use the createCards function to accept
+//the array colors and for every color of colors
+//we push a card into a board position 1-10
