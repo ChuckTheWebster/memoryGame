@@ -2,9 +2,16 @@
 body {
   text-align: center;
   background-image: url("imgs/memory-card-front.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
   background-color: #cccccc;
   color: white;
   font-family: Cinzel, sans-serif;
+  font-size: 30px;
+}
+
+h1 {
+  font-size: 70px;
 }
 
 img {
