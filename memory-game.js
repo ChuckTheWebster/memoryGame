@@ -37,10 +37,9 @@ function createCards(imagesShuffled) {
 
     const divForIndividualCard = document.createElement('div');
     divForIndividualCard.className = 'front';
-    divForIndividualCard.addEventListener('click', function(e) {
-      handleCardClick(e);
+    divForIndividualCard.addEventListener('click', handleCardClick);
       //is e the card here? What is the card?
-    });
+
     //event listener
 
     const imgForFront = document.createElement('img');
@@ -60,28 +59,22 @@ function handleCardClick(evt) {
   debugger
   const firstCard = document.getElementsByClassName(CARD_FRONT)[0];
   if (firstCard === undefined) {
-    return flipCardReveal(evt.target)
+    flipCardReveal(evt.target);
   }
   //const firstCardFlipped = document.getElementsByClassName('back')[0];
   //const secondCardFlipped = document.getElementsByClassName('back')[1];
   const secondCard = document.getElementsByClassName(CARD_FRONT)[1];
   if (secondCard === undefined && evt.target.className !== CARD_FRONT) {
-    return flipCardReveal(evt.target); //card probably wrong input
+    flipCardReveal(evt.target); //card probably wrong input
   }
-  //does this need to say return false to stop executing
-  //the function?
+
+  //this is going to start getting funky:
+
+
+
   return false
 }
 
-<<<<<<< HEAD
-function flipCardReveal(card) {
-  card.src = card.id;
-  card.id = CARD_FRONT;
-  card.className = "back";
-
-  const firstCard = document.getElementsByClassName('back')[0];
-  const secondCard = document.getElementsByClassName('back')[1];
-=======
 
 function flipCardReveal(card) {
   debugger
@@ -96,7 +89,6 @@ function flipCardReveal(card) {
   if (firstCard !== undefined && secondCard === undefined) {
     return false
   }
->>>>>>> reWorkIds
 
   //MAYBE IT"S FLIPPING THEM BOTH AT THE SAME TIME BACK DOWN
 /*
@@ -108,11 +100,6 @@ function flipCardReveal(card) {
 }
 
 
-<<<<<<< HEAD
-//ACTIVATE THE FOLLOWING FUNCTION AND OBSERVE HOW IT BREAKS THE CODE:
-/*
-=======
->>>>>>> reWorkIds
 function flipCardFaceDown(card1, card2) {
   debugger
   if (card1.src !== card2.src) {
