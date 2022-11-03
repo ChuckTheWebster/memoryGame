@@ -35,6 +35,10 @@ FOR FORCING THE SPACE BETWEEN CARDS TO BE LIMITED
 AND .card flex: 0 1 19% ensures 5 cards are on
 each row*/
 
-.card {
+.front {
+  flex: 0 1 19%;
+}
+
+.back {
   flex: 0 1 19%;
 }
