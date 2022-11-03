@@ -34,20 +34,16 @@ const gameBoard = document.getElementById('card-list');
 function createCards(imagesShuffled) {
 
   for (let image of imagesShuffled) {
+
     const divForIndividualCard = document.createElement('div');
-
-
-    divForIndividualCard.className = 'card';
+    divForIndividualCard.className = 'front';
     divForIndividualCard.addEventListener('click', function(e) {
       handleCardClick(e);
       //is e the card here? What is the card?
-    })
+    });
     //event listener
 
     const imgForFront = document.createElement('img');
-
-
-
     imgForFront.src = CARD_FRONT;
     //imgForFront.id = image;
     imgForFront.className = image;
@@ -62,40 +58,31 @@ createCards(imagesShuffled);
 
 function handleCardClick(evt) {
 
-  //FIX THESE
-  const twentiethCard = document.getElementsByClassName('CARD_FRONT')[19];
+  const twentiethCard = document.getElementsByClassName(CARD_FRONT)[0];
   if (twentiethCard === undefined) {
     return flipCardReveal(evt.target)
   }
-
   //const firstCardFlipped = document.getElementsByClassName('back')[0];
   //const secondCardFlipped = document.getElementsByClassName('back')[1];
-  const nineteenthCard = document.getElementsByClassName('CARD_FRONT')[18];
-  if (nineteenthCard === undefined && evt.target.class) {
+  const nineteenthCard = document.getElementsByClassName(CARD_FRONT)[1];
+  if (nineteenthCard === undefined && evt.target.className !== CARD_FRONT) {
     return flipCardReveal(evt.target); //card probably wrong input
   }
-
-  //this prevents the same card already flipped over from being flipped back
-  //and flips the second card
-  if (secondCardFlipped === undefined && firstCardFlipped.className !==
-    evt.target.className) {
-    flipCardReveal(evt.target);
-  }
-
   //does this need to say return false to stop executing
   //the function?
   return false
 }
 
-debugger
-function flipCardReveal(card) {
-  card.src = card.id;
-  card.id = CARD_FRONT;
-  card.className = "back";
 
-  debugger
-  const firstCard = document.getElementsByClassName('back')[0];
-  const secondCard = document.getElementsByClassName('back')[1];
+function flipCardReveal(card) {
+  card.src = card.className;
+  card.className = CARD_FRONT;
+
+  //card.cardParentClass.className = 'back';
+
+
+  const firstCard = document.getElementsByClassName('imgs/memory-card-front.png')[0];
+  const secondCard = document.getElementsByClassName('imgs/memory-card-front.png')[1];
 
   //MAYBE IT"S FLIPPING THEM BOTH AT THE SAME TIME BACK DOWN
   if (secondCard !==undefined) {
