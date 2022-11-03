@@ -57,7 +57,7 @@ function createCards(imagesShuffled) {
 createCards(imagesShuffled);
 
 function handleCardClick(evt) {
-
+  debugger
   const twentiethCard = document.getElementsByClassName(CARD_FRONT)[0];
   if (twentiethCard === undefined) {
     return flipCardReveal(evt.target)
@@ -75,33 +75,43 @@ function handleCardClick(evt) {
 
 
 function flipCardReveal(card) {
+  debugger
   card.src = card.className;
   card.className = CARD_FRONT;
 
   //card.cardParentClass.className = 'back';
-
-
   const firstCard = document.getElementsByClassName('imgs/memory-card-front.png')[0];
   const secondCard = document.getElementsByClassName('imgs/memory-card-front.png')[1];
+  //card.removeEventListener
+
+  if (firstCard !== undefined && secondCard === undefined) {
+    return false
+  }
 
   //MAYBE IT"S FLIPPING THEM BOTH AT THE SAME TIME BACK DOWN
-  if (secondCard !==undefined) {
+/*
+  if (secondCard !== undefined) {
+    debugger
     setTimeout(flipCardFaceDown(firstCard, secondCard), 5000);
   }
+  */
 }
 
-/*
+
 function flipCardFaceDown(card1, card2) {
-  card1.id = card1.src;
+  debugger
+  if (card1.src !== card2.src) {
+
+  card1.class = card1.src;
   card1.src = CARD_FRONT;
-  card1.className = "front";
+  //card1.parentElement.className = "front";
 
-  card2.id = card2.src;
+  card2.class = card2.src;
   card2.src = CARD_FRONT;
-  card2.className = "front";
+  //card2.parentElement.className = "front";
+  }
+  return false
 }
-*/
-
 
 
 /** Shuffle array items in-place and return shuffled array. */
