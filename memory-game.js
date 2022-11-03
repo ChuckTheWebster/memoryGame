@@ -58,14 +58,14 @@ createCards(imagesShuffled);
 
 function handleCardClick(evt) {
   debugger
-  const twentiethCard = document.getElementsByClassName(CARD_FRONT)[0];
-  if (twentiethCard === undefined) {
+  const firstCard = document.getElementsByClassName(CARD_FRONT)[0];
+  if (firstCard === undefined) {
     return flipCardReveal(evt.target)
   }
   //const firstCardFlipped = document.getElementsByClassName('back')[0];
   //const secondCardFlipped = document.getElementsByClassName('back')[1];
-  const nineteenthCard = document.getElementsByClassName(CARD_FRONT)[1];
-  if (nineteenthCard === undefined && evt.target.className !== CARD_FRONT) {
+  const secondCard = document.getElementsByClassName(CARD_FRONT)[1];
+  if (secondCard === undefined && evt.target.className !== CARD_FRONT) {
     return flipCardReveal(evt.target); //card probably wrong input
   }
   //does this need to say return false to stop executing
