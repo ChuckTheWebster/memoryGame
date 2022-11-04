@@ -56,16 +56,48 @@ createCards(imagesShuffled);
 
 const cards = document.querySelectorAll('.card-container .card');
 console.log(cards);
+let counter = 0;
+let firstCard = '';
+let secondCard = '';
+
+cards.forEach((card) => {
+  card.addEventListener('mousedown', () => {
+    card.classList.add('clicked');
+
+    const imageSrc = card.getAttribute('image-src');
+debugger
+    if (counter === 0) {
+      firstCard = card;
+      const firstCardImg = firstCard.querySelector('img');
+      firstCardImg.src = imageSrc;
+      firstCard.setAttribute('image-src', CARD_FRONT);
+      counter++;
+    } else if (counter === 1 && card !== firstCard) {
+      secondCard = card;
+      const secondCardImg = secondCard.querySelector('img');
+      secondCardImg.src = imageSrc;
+      secondCard.setAttribute('image-src', CARD_FRONT);
+      counter = 0;
+    }
+    console.log({firstCard});
+    console.log({secondCard});
+    console.log({counter});
+
+  });
+});
 
 cards.forEach((card) => {
   card.addEventListener('click', () => {
-
-
+    debugger
+    card.classList.add('test');
 
 
 
   });
 });
+
+
+
 
 
 /*
