@@ -33,7 +33,7 @@ const imagesShuffled = shuffle(IMAGES);
 const gameBoard = document.getElementById('card-list');
 let countForId = 1;
 function createCards(imagesShuffled) {
-
+  debugger
   for (let image of imagesShuffled) {
 
     //create new card div
@@ -61,21 +61,32 @@ let firstCard = '';
 let secondCard = '';
 
 cards.forEach((card) => {
-  card.addEventListener('mousedown', () => {
+  card.addEventListener('click', () => {
     card.classList.add('clicked');
 
-    const imageSrc = card.getAttribute('image-src');
-debugger
+    //const imageSrc = card.getAttribute('image-src');
+
     if (counter === 0) {
       firstCard = card;
       counter++;
     } else if (counter === 1 && card !== firstCard) {
       secondCard = card;
-      const secondCardImg = secondCard.querySelector('img');
-      secondCardImg.src = imageSrc;
-      secondCard.setAttribute('image-src', CARD_FRONT);
       counter = 0;
     }
+
+    const firstCardSrc = document.getAttribute('image-src');
+    const secondCardSrc = document.getAttribute('image-src');
+
+
+    //if (firstCardSrc === secondCardSrc) {
+      //const cards.querySelectorAll('image-src');
+
+    //}
+
+
+
+
+
     console.log({firstCard});
     console.log({secondCard});
     console.log({counter});
