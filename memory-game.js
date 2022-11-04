@@ -31,55 +31,93 @@ function shuffle(items) {
 //The following shuffles the images and createsCards from them:
 const imagesShuffled = shuffle(IMAGES);
 const gameBoard = document.getElementById('card-list');
+let countForId = 1;
 function createCards(imagesShuffled) {
 
   for (let image of imagesShuffled) {
-    const divForIndividualCard = document.createElement('div');
-    //with className as image there will always be two that match classes
-    divForIndividualCard.className = image;
-    divForIndividualCard.addEventListener('click', function(e) {
-      handleCardClick(e);
-      //is e the card here? What is the card?
-    })
-    //event listener
 
+    //create new card div
+    const divForIndividualCard = document.createElement('div');
+    divForIndividualCard.className = ('card');
+    divForIndividualCard.setAttribute('image-src', image);
+
+    //set card image as front
     const imgForFront = document.createElement('img');
     imgForFront.src = CARD_FRONT;
-    imgForFront.id = image;
+    imgForFront.id = 'img-' + countForId;
+    countForId++;
 
     //append is better than appendChild
     divForIndividualCard.append(imgForFront);
     gameBoard.append(divForIndividualCard);
   }
-
-  return false
 }
 createCards(imagesShuffled);
 
+const cards = document.querySelectorAll('.card-container .card');
+console.log(cards);
+
+cards.forEach((card) => {
+  card.addEventListener('click', () => {
+
+
+
+
+
+  });
+});
+
+
+/*
+let firstCardFlipped = null;
+let secondCardFlipped = null;
 function handleCardClick(evt) {
+  debugger
 
-  const firstCardFlipped = document.getElementsByClassName('back')[0];
-  const secondCardFlipped = document.getElementsByClassName('back')[1];
-
-  if (firstCardFlipped === undefined) {
-    return flipCardReveal(evt.target);
-  }
-
-  if (secondCardFlipped === undefined && firstCardFlipped.id !==
-    secondCardFlipped.id) {
+  if (firstCardFlipped === null) {
+    firstCardFlipped = evt.target;
     flipCardReveal(evt.target);
   }
 
-  //does this need to say return false to stop executing
-  //the function?
-  return false
+  if (secondCardFlipped === null && firstCardFlipped.id !== evt.target.id) {
+    secondCardFlipped = evt.target;
+    flipCardReveal(evt.target);
+  }
 }
+
 
 function flipCardReveal(card) {
-  card.src = card.id;
-  card.id = CARD_FRONT;
+  debugger
+  card.src = card.parentElement.className;
+  card.parentElement.className = CARD_FRONT;
+  console.log(`why isn't the card flipping now?`);
+}
+*/
+
+/*
+
+function flipCardFaceDown(card1, card2) {
+  card1.parentElement.className = card1.src;
+  card1.src = CARD_FRONT;
+
+  card2.parentElement.className = card2.src;
+  card2.src = CARD_FRONT;
 }
 
+
+function startTimeout(firstCardFlipped, secondCardFlipped) {
+
+  if (firstCardFlipped !== null && secondCardFlipped !==null) {
+  //flipCardReveal(firstCardFlipped);
+  //flipCardReveal(secondCardFlipped);
+
+    setTimeout(function(firstCardFlipped, secondCardFlipped) {
+      flipCardFaceDown(firstCardFlipped, secondCardFlipped);
+    }, FOUND_MATCH_WAIT_MSECS);
+  }
+}
+*/
+//can i activate setTimeout with an event listener
 
 
 /** Shuffle array items in-place and return shuffled array. */
@@ -118,9 +156,7 @@ f
 /** Flip a card face-down. */
 
 /*UNCOMMENT
-function flipCardFaceDown(card) {
-  // ... you need to write this ...
-}
+
 */
 
 //THIS IS A FUNCTION THAT I ADDED:
