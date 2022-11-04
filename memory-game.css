@@ -14,41 +14,32 @@ h1 {
   font-size: 70px;
 }
 
-img {
-  height: 125px;
-  width: 80px;
-  border: 2px solid;
-  border-color: rgba(255,255,255,1);
-  border-radius: 12px;
-  /*padding gave them space between the card
-  and the border*/
-  /*padding: 5px;*/
-  margin-left: 5px;
-  margin-right: 5px;
-  /*background-color: rgba(255,255,255,.5);*/
-  /*NEW STUFF
-  background-image: url(imgs/memory-card-front.png), opacity 1;*/
-
-  opacity: .5;
-}
-
-/*
-.card {
-  background-image: url(imgs/memory-card-front.png);
-  display: grid;
-  place-items: center;
-  background-color: yellow;
-}
-*/
-
-
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  width: 500px;
+  width: 525px;
   justify-content: center;
   margin: auto;
   margin-top: 30px;
+}
+
+.card {
+  height: 125px;
+  width: 80px;
+  border: 2px solid;
+  border-radius: 12px;
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+  margin-top: 5px;
+  background-image: url(imgs/memory-card-front.png);
+  background-size: 100%;
+}
+
+.card img {
+  height: 125px;
+  width: 80px;
+  border-radius: 11px;
+  opacity: 1;
 }
 
 /*SETTING THE WIDTH OF THE CARD CONTAINER IS KEY
@@ -56,6 +47,7 @@ FOR FORCING THE SPACE BETWEEN CARDS TO BE LIMITED
 AND .card flex: 0 1 19% ensures 5 cards are on
 each row*/
 
+/*
 .front {
   flex: 0 1 19%;
 }
@@ -63,3 +55,4 @@ each row*/
 .back {
   flex: 0 1 19%;
 }
+*/
