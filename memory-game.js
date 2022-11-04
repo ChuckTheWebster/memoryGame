@@ -90,7 +90,7 @@ cards.forEach((card) => {
         matchedPairNode[0].classList.remove('clicked');
         matchedPairNode[1].classList.add('correct');
         matchedPairNode[1].classList.remove('clicked');
-        //counter = 0;
+
 
     } else if (counter === 0 && secondCard) {
         const incorrectPairNode = document.querySelectorAll('.card.clicked');
@@ -103,7 +103,7 @@ cards.forEach((card) => {
         incorrectPairNode[0].classList.remove('clicked');
         incorrectPairNode[1].classList.remove('shake');
         incorrectPairNode[1].classList.remove('clicked');
-        //counter = 0;
+        secondCard = '';
       }, FOUND_MATCH_WAIT_MSECS);
     }
 
