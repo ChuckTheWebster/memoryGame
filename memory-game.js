@@ -42,13 +42,13 @@ function createCards(imagesShuffled) {
     divForIndividualCard.setAttribute('image-src', image);
 
     //set card image as front
-    const imgForFront = document.createElement('img');
-    imgForFront.src = CARD_FRONT;
-    imgForFront.id = 'img-' + countForId;
+    const imgOfGeometry = document.createElement('img');
+    imgOfGeometry.src = image;
+    imgOfGeometry.id = 'img-' + countForId;
     countForId++;
 
     //append is better than appendChild
-    divForIndividualCard.append(imgForFront);
+    divForIndividualCard.append(imgOfGeometry);
     gameBoard.append(divForIndividualCard);
   }
 }
@@ -68,9 +68,6 @@ cards.forEach((card) => {
 debugger
     if (counter === 0) {
       firstCard = card;
-      const firstCardImg = firstCard.querySelector('img');
-      firstCardImg.src = imageSrc;
-      firstCard.setAttribute('image-src', CARD_FRONT);
       counter++;
     } else if (counter === 1 && card !== firstCard) {
       secondCard = card;
@@ -86,15 +83,6 @@ debugger
   });
 });
 
-cards.forEach((card) => {
-  card.addEventListener('click', () => {
-    debugger
-    card.classList.add('test');
-
-
-
-  });
-});
 
 
 
