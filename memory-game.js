@@ -33,7 +33,7 @@ const imagesShuffled = shuffle(IMAGES);
 const gameBoard = document.getElementById('card-list');
 let countForId = 1;
 function createCards(imagesShuffled) {
-  debugger
+
   for (let image of imagesShuffled) {
 
     //create new card div
@@ -64,9 +64,9 @@ cards.forEach((card) => {
   card.addEventListener('click', () => {
     card.classList.add('clicked');
 
-    //const imageSrc = card.getAttribute('image-src');
+    //cards.querySelectorAll('clicked');
 
-    if (counter === 0) {
+    if (counter === 0/*&& list of cards that say clicked is not >2*/) {
       firstCard = card;
       counter++;
     } else if (counter === 1 && card !== firstCard) {
@@ -74,14 +74,38 @@ cards.forEach((card) => {
       counter = 0;
     }
 
-    const firstCardSrc = document.getAttribute('image-src');
-    const secondCardSrc = document.getAttribute('image-src');
+    const firstCardSrc = firstCard.getAttribute('image-src');
+    let secondCardSrc = '';
+    if (secondCard) {
+      secondCardSrc = secondCard.getAttribute('image-src');
+    }
+
+    if (firstCardSrc === secondCardSrc) {
+      const matchedPairNode = document.querySelectorAll(
+        ".card[image-src='" + firstCardSrc + "']");
+        console.log(matchedPairNode);
+        matchedPairNode[0].classList.add('correct');
+        matchedPairNode[0].classList.remove('clicked');
+        matchedPairNode[1].classList.add('correct');
+        matchedPairNode[1].classList.remove('clicked');
+
+    } else if (counter === 0 && secondCard) {
+        const incorrectPairNode = document.querySelectorAll('.card.clicked');
+        console.log(incorrectPairNode);
+        incorrectPairNode[0].classList.add('shake');
+        incorrectPairNode[1].classList.add('shake');
+
+      setTimeout(() => {
+        incorrectPairNode[0].classList.remove('shake');
+        incorrectPairNode[0].classList.remove('clicked');
+        incorrectPairNode[1].classList.remove('shake');
+        incorrectPairNode[1].classList.remove('clicked');
+      }, 800);
+    }
 
 
-    //if (firstCardSrc === secondCardSrc) {
-      //const cards.querySelectorAll('image-src');
 
-    //}
+
 
 
 
