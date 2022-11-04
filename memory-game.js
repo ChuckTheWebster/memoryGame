@@ -2,9 +2,7 @@
 
 /** Memory game: find matching pairs of cards and flip both of them. */
 
-const FOUND_MATCH_WAIT_MSECS = 1000;
-
-const CARD_FRONT = "imgs/memory-card-front.png";
+const FOUND_MATCH_WAIT_MSECS = 800;
 const IMAGES = ["imgs/card-1-img.png", "imgs/card-1-img.png", "imgs/card-2-img.png",
   "imgs/card-2-img.png", "imgs/card-3-img.png", "imgs/card-3-img.png",
   "imgs/card-4-img.png", "imgs/card-4-img.png", "imgs/card-5-img.png",
@@ -14,14 +12,11 @@ const IMAGES = ["imgs/card-1-img.png", "imgs/card-1-img.png", "imgs/card-2-img.p
   "imgs/white-img-9.png", "imgs/white-img-10.png"
 ];
 
-
 //This algorithm does a perfect Fisher-Yates shuffle:
 function shuffle(items) {
 
   for (let i = items.length - 1; i > 0; i--) {
-    // generate a random index between 0 and i
     let j = Math.floor(Math.random() * i);
-    // swap item at i <-> item at j
     [items[i], items[j]] = [items[j], items[i]];
   }
 
@@ -62,11 +57,14 @@ let secondCard = '';
 
 cards.forEach((card) => {
   card.addEventListener('click', () => {
+    const shakingCards = document.querySelectorAll('.card.shake');
+    //const clickedCards = document.querySelectorAll('.card.clicked');
+    /*if (!clickedCards[1] /*&& !shakingCards[1])*/
+
     card.classList.add('clicked');
 
-    //cards.querySelectorAll('clicked');
-
-    if (counter === 0/*&& list of cards that say clicked is not >2*/) {
+    const clickedCards = document.querySelectorAll('.card.clicked');
+    if (counter === 0) {
       firstCard = card;
       counter++;
     } else if (counter === 1 && card !== firstCard) {
@@ -74,24 +72,29 @@ cards.forEach((card) => {
       counter = 0;
     }
 
+    //if the THIRD CARD YOU CLICK IS A MATCH TO THE FIRST
+    //BUG
+
     const firstCardSrc = firstCard.getAttribute('image-src');
     let secondCardSrc = '';
     if (secondCard) {
       secondCardSrc = secondCard.getAttribute('image-src');
+      console.log({secondCard});
     }
 
     if (firstCardSrc === secondCardSrc) {
       const matchedPairNode = document.querySelectorAll(
         ".card[image-src='" + firstCardSrc + "']");
-        console.log(matchedPairNode);
+        console.log({matchedPairNode});
         matchedPairNode[0].classList.add('correct');
         matchedPairNode[0].classList.remove('clicked');
         matchedPairNode[1].classList.add('correct');
         matchedPairNode[1].classList.remove('clicked');
+        //counter = 0;
 
     } else if (counter === 0 && secondCard) {
         const incorrectPairNode = document.querySelectorAll('.card.clicked');
-        console.log(incorrectPairNode);
+        console.log({incorrectPairNode});
         incorrectPairNode[0].classList.add('shake');
         incorrectPairNode[1].classList.add('shake');
 
@@ -100,20 +103,9 @@ cards.forEach((card) => {
         incorrectPairNode[0].classList.remove('clicked');
         incorrectPairNode[1].classList.remove('shake');
         incorrectPairNode[1].classList.remove('clicked');
-      }, 800);
+        //counter = 0;
+      }, FOUND_MATCH_WAIT_MSECS);
     }
-
-
-
-
-
-
-
-
-
-    console.log({firstCard});
-    console.log({secondCard});
-    console.log({counter});
 
   });
 });
